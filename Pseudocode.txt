@@ -19,6 +19,7 @@ booking_ID <- 0
 cost <- 0 
 extra_selected <- 0
 
+count <- 0
 
 For count = 1 To 5
     PRINT ("Ticket type = ", ticket_type(count), ":", "Cost 1 Day="one_day_booking_cost(count),":", "Cost 2 day =", two_day_booking_cost(count))
