@@ -1,13 +1,13 @@
 TASK 1 
 ------------------------------------------------------------------------------------------------
-ticket_type() <- ("OneAdult","OneChild","Onesenior","FamilyTicket, "GroupTicket")
-one_day_booking_cost() <- (20, 12, 16, 60, 15)
-two_day_booking_cost() <- (30, 18, 24, 90, 22.5)
-extra_attraction() <- ("Lionfeed", "Penguinfeed", "Barbecue(only 2day ticket)")
-extra_attraction_cost <- (2.5, 2, 5)
-days_of_the_week <- ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
-choice <- ""
-extra_choice <- "" 
+ticket_type <- ["OneAdult","OneChild","Onesenior","FamilyTicket, "GroupTicket"]
+one_day_booking_cost <- [20, 12, 16, 60, 15]
+two_day_booking_cost <- [30, 18, 24, 90, 22.5]
+extra_attraction <- ["Lionfeed", "Penguinfeed", "Barbecue(only 2day ticket)"]
+extra_attraction_cost <- [2.5, 2, 5]
+days_of_the_week <- ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+choice <- []
+extra_choice <- []
 
 family_group <- 0
 
@@ -21,7 +21,7 @@ extra_selected <- 0
 
 
 For count = 1 To 5
-    PRINT ("Ticket type = ", ticket_type(count), ":", "Cost1 Day="one_day_booking_cost(count),":"
+    PRINT ("Ticket type = ", ticket_type(count), ":", "Cost 1 Day="one_day_booking_cost(count),":"
     , "Cost 2 day =", two_day_booking_cost(count))
 Next
 PRINT ("Entra attraction optons are displayed below:")
@@ -54,7 +54,7 @@ If options = Y Then
 
         PRINT("Your booking_ID for this booking is: " , booking_ID)
 
-        PRINT("Cost of ticket:",ticket_type(ticket_selected),"tickets=",num_of_tickets," Cost=",cost)
+        PRINT("Cost of ticket:",ticket_type[ticket_selected],"tickets=",num_of_tickets," Cost=",cost)
 
         PRINT ("Do you want Extra attraction? Y/N")
         INPUT extra_choice
@@ -69,13 +69,13 @@ If options = Y Then
             cost = cost + extra_attraction_cost(extra_selected)
             
             PRINT (
-                " Cost of:",ticket_type(ticket_selected), 
-                " Num of tickets:", numofticket, "+", extra_attraction(extra_selected), 
+                " Cost of:",ticket_type[ticket_selected], 
+                " Num of tickets:", numofticket, "+", extra_attraction[extra_selected], 
                 " TOTAL=", cost)
             
             Else
                 PRINT (
-                    " Your ticket cost :", ticket_type(ticket_selected),
+                    " Your ticket cost :", ticket_type[ticket_selected],
                     " Num of tickets: ", num_of_tickets,
                     " No attraction "," Cost = ", cost)
         END IF
@@ -124,7 +124,7 @@ If best_offer > 0 Then
 End If
 
 PRINT (
-        "Ticket Type = ", ticket_type(ticket_selected)
+        "Ticket Type = ", ticket_type[ticket_selected]
         ", Number = ", num_of_tickets
         " ,Cost = ", cost
         
