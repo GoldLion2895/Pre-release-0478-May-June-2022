@@ -34,12 +34,14 @@ TASK 2
 ------------------------------------------------------------------------------------------------
 PRINT ("Do you want to buy tickets? Y/N ")
 INPUT options
-If (options = "Y" or offer="y") THEN
+IF (options = "Y" or offer="y") THEN
     PRINT ("Enter Ticket Catagory number: 1= OneAdult , 2 = OneChild, 3 = Onesenior 4 = Family Ticket, 5 = Group ticket")
     INPUT ticket_selected
 
-    If ticket_selected >1 OR <5 Then
+    IF ticket_selected >1 OR <5 THEN
         Print ("Enter a valid option")
+    ELSE
+        pass     
 
     PRINT ("Confirm booking for One day or Two days? 1 = one day, 2 = two days")
     INPUT booking_day
@@ -49,11 +51,11 @@ If (options = "Y" or offer="y") THEN
 
     WHILE booking_day =1 OR =2 AND num_of_tickets>0
         booking_ID = booking_ID + 1  # This is for unique booking ID
-        If booking_day = 1 Then
+        IF booking_day = 1 THEN
             cost = num_of_tickets * one_day_booking_cost(ticket_selected)
-            ElseIf booking_day = 2 Then
-            cost = num_of_tickets * two_day_booking_cost(ticket_selected)
-        End If
+            ELSEIF booking_day = 2 THEN
+                cost = num_of_tickets * two_day_booking_cost(ticket_selected)
+        End IF
 
         PRINT("Your booking_ID for this booking is: " , booking_ID)
 
@@ -61,7 +63,7 @@ If (options = "Y" or offer="y") THEN
 
         PRINT ("Do you want Extra attraction? Y/N")
         INPUT extra_choice
-        IF extra_choice = Y Then
+        IF extra_choice = Y THEN
             PRINT ("Extra attraction num: 1= Lionfeed, 2= Penguinfeed, 3= Barbecue")
             INPUT extra_selected
             WHILE extra_selected =3 AND booking_day =1 # Validation check for BBQ which is only for 2 day tickets
@@ -73,11 +75,11 @@ If (options = "Y" or offer="y") THEN
             
             PRINT ("Cost of:",ticket_type[ticket_selected], "Num of tickets: ", numofticket, "+", extra_attraction[extra_selected], "Cost:", cost)
             
-            Else
+            ELSE
                 PRINT ("Your ticket cost: ", ticket_type[ticket_selected], "Num of tickets: ", num_of_tickets, "No attraction"," Cost: ", cost)
         END IF
     END WHILE
-    Else
+    ELSE
     PRINT ("You chose to buy no tickets. Have a great day.")
 END IF
 
@@ -91,32 +93,32 @@ IF TotalMember>=6 :
         Groupcost=Totalmember()
     ELSEIF(VistingDays=2)  
         Groupcost=Totalmember*22.50
-Print(“Total Cost Calculation for tickets :”,TotalTicketcost)
-Print("The Group cost is:",Groupcost)
+PRINT(“Total Cost Calculation for tickets :”,TotalTicketcost)
+PRINT("The Group cost is:",Groupcost)
 
     IF( TotalTicketcost > Groupcost)THEN
-        Print("Taking group ticket is the best offer")
+        PRINT ("Taking group ticket is the best offer")
         offer=input("Do you want this offer Y/N")
       IF (offer = "Y" or offer="y") THEN
             TotalTicketcost=Groupcost
       ELSE
-        Print("Family ticket is the best offer")
+        PRINT ("Family ticket is the best offer")
      END IF
     END IF
 END IF
 
 
-If best_offer > 0 Then
+IF best_offer > 0 THEN
     PRINT ("Take BEST offer & save = ", cost - best_offer)
     PRINT ("Best offer: ", best_offer, "For Best offer do a NEW Booking: Y/N, Do you want new booking? ")
     
     INPUT choice
     
-    If choice = Y Then
+    IF choice = Y THEN
         GoTo Task 2
-        Else
+        ELSE
             PRINT ("Best offer not selected")
-    End If
-End If
+    End IF
+End IF
 
 PRINT ("Ticket Type: ", ticket_type[ticket_selected]", Number: ", num_of_tickets, "Cost: ", cost)
