@@ -34,7 +34,7 @@ TASK 2
 ------------------------------------------------------------------------------------------------
 PRINT ("Do you want to buy tickets? Y/N ")
 INPUT options
-If options = Y Then
+If (options = "Y" or offer="y") THEN
     PRINT ("Enter Ticket Catagory number: 1= OneAdult , 2 = OneChild, 3 = Onesenior 4 = Family Ticket, 5 = Group ticket")
     INPUT ticket_selected
 
@@ -81,7 +81,7 @@ If options = Y Then
         END IF
     END WHILE
     Else
-    PRINT ("You choose to buy no tickets. Have a great day.")
+    PRINT ("You chose to buy no tickets. Have a great day.")
 
 TASK 3
 ------------------------------------------------------------------------------------------------
