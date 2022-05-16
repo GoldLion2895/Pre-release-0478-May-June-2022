@@ -23,11 +23,11 @@ count <- 0
 
 For count = 1 To 5
     PRINT ("Ticket type = ", ticket_type(count), ":", "Cost 1 Day="one_day_booking_cost(count),":", "Cost 2 day =", two_day_booking_cost(count))
-Next
+Next count
 PRINT ("Entra attraction optons are displayed below:")
 For count = 1 To 3
     PRINT ("Attraction", extra_attraction_cost(count), "=", extra_attraction(count))
-Next
+Next count
 
 
 TASK 2
@@ -37,6 +37,9 @@ INPUT options
 If (options = "Y" or offer="y") THEN
     PRINT ("Enter Ticket Catagory number: 1= OneAdult , 2 = OneChild, 3 = Onesenior 4 = Family Ticket, 5 = Group ticket")
     INPUT ticket_selected
+
+    If ticket_selected >1 OR <5 Then
+        Print ("Enter a valid option")
 
     PRINT ("Confirm booking for One day or Two days? 1 = one day, 2 = two days")
     INPUT booking_day
