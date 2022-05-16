@@ -3,7 +3,7 @@ TASK 1
 ticket_type <- ["OneAdult","OneChild","Onesenior","FamilyTicket, "GroupTicket"]
 one_day_booking_cost <- [20, 12, 16, 60, 15]
 two_day_booking_cost <- [30, 18, 24, 90, 22.5]
-extra_attraction <- ["Lionfeed", "Penguinfeed", "Barbecue(only 2day ticket)"]
+extra_attraction <- ["Lionfeed", "Penguinfeed", "Barbecue(only 2 day ticket)"]
 extra_attraction_cost <- [2.5, 2, 5]
 days_of_the_week <- ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 choice <- []
@@ -21,8 +21,7 @@ extra_selected <- 0
 
 
 For count = 1 To 5
-    PRINT ("Ticket type = ", ticket_type(count), ":", "Cost 1 Day="one_day_booking_cost(count),":"
-    , "Cost 2 day =", two_day_booking_cost(count))
+    PRINT ("Ticket type = ", ticket_type(count), ":", "Cost 1 Day="one_day_booking_cost(count),":", "Cost 2 day =", two_day_booking_cost(count))
 Next
 PRINT ("Entra attraction optons are displayed below:")
 For count = 1 To 3
@@ -61,27 +60,22 @@ If (options = "Y" or offer="y") THEN
         IF extra_choice = Y Then
             PRINT ("Extra attraction num: 1= Lionfeed, 2= Penguinfeed, 3= Barbecue")
             INPUT extra_selected
-            WHILE extra_selected =3 AND booking_day =1 # Validation check for BBQ which is only for 2 day tickets (We are doing this so that we can check if they entered the number and then tell them it isn't available)
+            WHILE extra_selected =3 AND booking_day =1 # Validation check for BBQ which is only for 2 day tickets
                 PRINT ("Barbecue is available for two day tickets only, Input again")
                 INPUT extra_selected
             END WHILE
 
             cost = cost + extra_attraction_cost(extra_selected)
             
-            PRINT (
-                " Cost of:",ticket_type[ticket_selected], 
-                " Num of tickets:", numofticket, "+", extra_attraction[extra_selected], 
-                " TOTAL=", cost)
+            PRINT ("Cost of:",ticket_type[ticket_selected], "Num of tickets: ", numofticket, "+", extra_attraction[extra_selected], "Cost:", cost)
             
             Else
-                PRINT (
-                    " Your ticket cost :", ticket_type[ticket_selected],
-                    " Num of tickets: ", num_of_tickets,
-                    " No attraction "," Cost = ", cost)
+                PRINT ("Your ticket cost: ", ticket_type[ticket_selected], "Num of tickets: ", num_of_tickets, "No attraction"," Cost: ", cost)
         END IF
     END WHILE
     Else
     PRINT ("You chose to buy no tickets. Have a great day.")
+END IF
 
 TASK 3
 ------------------------------------------------------------------------------------------------
@@ -105,14 +99,12 @@ Print("The Group cost is:",Groupcost)
         Print("Family ticket is the best offer")
      END IF
     END IF
+END IF
 
 
 If best_offer > 0 Then
     PRINT ("Take BEST offer & save = ", cost - best_offer)
-    PRINT (
-            "Best offer = ", best_offer
-            "For Best offer do a NEW Booking: Y/N, Do you want new booking? "
-            )
+    PRINT ("Best offer: ", best_offer, "For Best offer do a NEW Booking: Y/N, Do you want new booking? ")
     
     INPUT choice
     
@@ -123,9 +115,4 @@ If best_offer > 0 Then
     End If
 End If
 
-PRINT (
-        "Ticket Type = ", ticket_type[ticket_selected]
-        ", Number = ", num_of_tickets
-        " ,Cost = ", cost
-        
-    )
+PRINT ("Ticket Type: ", ticket_type[ticket_selected]", Number: ", num_of_tickets, "Cost: ", cost)
