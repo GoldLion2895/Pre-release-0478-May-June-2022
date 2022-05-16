@@ -33,57 +33,55 @@ Next
 TASK 2
 ------------------------------------------------------------------------------------------------
 PRINT ("Do you want to buy tickets? Y/N ")
-PRINT ("Enter Ticket Catagory number: 1= OneAdult , 2 = OneChild, 3 = Onesenior 4 = Family Ticket, 5 = Group ticket")
-INPUT ticket_selected
+INPUT options
+If options = Y Then
+    PRINT ("Enter Ticket Catagory number: 1= OneAdult , 2 = OneChild, 3 = Onesenior 4 = Family Ticket, 5 = Group ticket")
+    INPUT ticket_selected
 
+    PRINT ("Confirm booking for One day or Two days? 1 = one day, 2 = two days")
+    INPUT booking_day
 
-If ticket_selected = 5 Then
-    PRINT ("Is this family group? Y/N")
-    INPUT family_group
-End If
+    PRINT ("Enter number of tickets")
+    INPUT num_of_tickets
 
+    WHILE booking_day =1 OR =2 AND num_of_tickets>0
+        booking_ID = booking_ID + 1  # This is for unique booking ID
+        If booking_day = 1 Then
+            cost = num_of_tickets * one_day_booking_cost(ticket_selected)
+            ElseIf booking_day = 2 Then
+            cost = num_of_tickets * two_day_booking_cost(ticket_selected)
+        End If
 
-PRINT ("Confirm booking for One day or Two days? 1 = one day, 2 = two days")
-INPUT booking_day
+        PRINT("Your booking_ID for this booking is: " , booking_ID)
 
-PRINT ("Enter number of tickets")
-INPUT num_of_tickets
+        PRINT("Cost of ticket:",ticket_type(ticket_selected),"tickets=",num_of_tickets," Cost=",cost)
 
-booking_ID = booking_ID + 1  # This is for unique booking ID
-If booking_day = 1 Then
-    cost vbv= num_of_tickets * one_day_booking_cost(ticket_selected)
-    ElseIf booking_day = 2 Then
-    cost = num_of_tickets * two_day_booking_cost(ticket_selected)
-End If
+        PRINT ("Do you want Extra attraction? Y/N")
+        INPUT extra_choice
+        IF extra_choice = Y Then
+            PRINT ("Extra attraction num: 1= Lionfeed, 2= Penguinfeed, 3= Barbecue")
+            INPUT extra_selected
+            WHILE extra_selected =3 AND booking_day =1 # Validation check for BBQ which is only for 2 day tickets (We are doing this so that we can check if they entered the number and then tell them it isn't available)
+                PRINT ("Barbecue is available for two day tickets only, Input again")
+                INPUT extra_selected
+            END WHILE
 
-PRINT("Your booking_ID for this booking is: " , booking_ID)
-
-PRINT("Cost of ticket:",ticket_type(ticket_selected),"tickets=",num_of_tickets," Cost=",cost)
-
-PRINT ("Do you want Extra attraction? Y/N")
-INPUT extra_choice
-IF extra_choice = Y Then
-    PRINT ("Extra attraction num: 1= Lionfeed, 2= Penguinfeed, 3= Barbecue")
-    INPUT extra_selected
-    WHILE extra_selected =3 AND booking_day =1 # Validation check for BBQ which is only for 2 day tickets (We are doing this so that we can check if they entered the number and then tell them it isn't available)
-        PRINT ("Barbecue is available for two day tickets only, Input again")
-        INPUT extra_selected
+            cost = cost + extra_attraction_cost(extra_selected)
+            
+            PRINT (
+                " Cost of:",ticket_type(ticket_selected), 
+                " Num of tickets:", numofticket, "+", extra_attraction(extra_selected), 
+                " TOTAL=", cost)
+            
+            Else
+                PRINT (
+                    " Your ticket cost :", ticket_type(ticket_selected),
+                    " Num of tickets: ", num_of_tickets,
+                    " No attraction "," Cost = ", cost)
+        END IF
     END WHILE
-
-    cost = cost + extra_attraction_cost(extra_selected)
-    
-    PRINT (
-        " Cost of:",ticket_type(ticket_selected), 
-        " Num of tickets:", numofticket, "+", extra_attraction(extra_selected), 
-        " TOTAL=", cost)
-    
     Else
-        PRINT (
-            " Your ticket cost :", ticket_type(ticket_selected),
-            " Num of tickets: ", num_of_tickets,
-            " No attraction "," Cost = ", cost)
-END IF
-
+    PRINT ("You choose to buy no tickets. Have a great day.")
 
 TASK 3
 ------------------------------------------------------------------------------------------------
